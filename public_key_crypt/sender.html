@@ -21,33 +21,34 @@
       class="w-full flex gap-4"
     >
       <div
-      class="w-full"
+        class="w-full"
       >
         <div
           class="w-full flex"
         >
           <label
-            class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
+            class="basis-2/3 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
           >
-            秘密鍵
+            適当な数
           </label>
           <input
-            id="secret-key"
+            id="send-number"
             type="number" min="10" max="99"
             class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
-            onchange="calcPare1()"
+            onchange="calcPare2()"
           >
         </div>
         <p>⚠️この数字は役人以外には見せてはいけません。</p>
       </div>
+
       <div
-      class="w-full"
+        class="w-full mb-4"
       >
         <div
           class="w-full flex"
         >
           <label
-            class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+            class="basis-2/3 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
           >
             公開鍵
           </label>
@@ -55,14 +56,15 @@
             id="public-key"
             type="number" min="10" max="99"
             class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
-            onchange="calcPare1()"
+            onchange="calcPare2()"
           >
         </div>
       </div>
+
     </div>
 
     <div
-      class="w-full mb-4"
+      class="w-full"
     >
       <div
         class="w-full flex"
@@ -74,23 +76,14 @@
         </label>
         <input
           id="public-pare-key1"
-          type="number" min="10" max="99"
+          type="number"
           class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
-          disabled
         >
       </div>
-      <p>この数字は「秘密鍵×公開鍵」求めています。</p>
     </div>
 
-    <button
-      onclick="handleShow()"
-      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
-    >
-      共有する
-    </button>
-
     <div
-      class="w-full mb-4"
+      class="w-full"
     >
       <div
         class="w-full flex"
@@ -102,14 +95,23 @@
         </label>
         <input
           id="public-pare-key2"
-          type="number" min="10" max="99"
+          type="number"
           class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+          disabled
         >
       </div>
+      <p>この数字は「適当な数①×公開鍵」求めています。</p>
     </div>
 
+    <button
+      onclick="handleShow()"
+      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+    >
+      共有する
+    </button>
+
     <div
-      class="w-full mb-4"
+      class="w-full"
     >
       <div
         class="w-full flex"
@@ -121,12 +123,12 @@
         </label>
         <input
           id="secret-number"
-          type="number" min="10" max="99"
+          type="number"
           class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
           disabled
         >
       </div>
-      <p>この数字は「秘密鍵×公開鍵のペア②」求めています。</p>
+      <p>⚠️この数字は役人以外には見せてはいけません。この数字は「適当な数×公開鍵のペア①」で求めています。</p>
     </div>
 
     <button
