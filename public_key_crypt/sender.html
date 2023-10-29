@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>公開鍵暗号方式 | 暗号ロールプレイゲーム</title>
+</head>
+<body
+  class="w-screen min-h-screen flex flex-col gap-4 justify-center p-4"
+>
+  <h1
+  class="text-3xl font-bold text-sky-600 mt-8"
+  >
+    役人（送信者） | 公開鍵暗号方式
+  </h1>
+  <div
+    class="w-full rounded-md flex flex-col gap-4 border border-sky-400 p-4 shadow-lg"
+  >
+    <div
+      class="w-full flex gap-4"
+    >
+      <div
+      class="w-full"
+      >
+        <div
+          class="w-full flex"
+        >
+          <label
+            class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
+          >
+            秘密鍵
+          </label>
+          <input
+            id="secret-key"
+            type="number" min="10" max="99"
+            class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+            onchange="calcPare1()"
+          >
+        </div>
+        <p>⚠️この数字は役人以外には見せてはいけません。</p>
+      </div>
+      <div
+      class="w-full"
+      >
+        <div
+          class="w-full flex"
+        >
+          <label
+            class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+          >
+            公開鍵
+          </label>
+          <input
+            id="public-key"
+            type="number" min="10" max="99"
+            class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+            onchange="calcPare1()"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="w-full mb-4"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+          公開鍵のペア①
+        </label>
+        <input
+          id="public-pare-key1"
+          type="number" min="10" max="99"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+          disabled
+        >
+      </div>
+      <p>この数字は「秘密鍵×公開鍵」求めています。</p>
+    </div>
+
+    <button
+      onclick="handleShow()"
+      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+    >
+      共有する
+    </button>
+
+    <div
+      class="w-full mb-4"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+          公開鍵のペア②
+        </label>
+        <input
+          id="public-pare-key2"
+          type="number" min="10" max="99"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+    </div>
+
+    <div
+      class="w-full mb-4"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
+        >
+          秘密の数字
+        </label>
+        <input
+          id="secret-number"
+          type="number" min="10" max="99"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+          disabled
+        >
+      </div>
+      <p>この数字は「秘密鍵×公開鍵のペア②」求めています。</p>
+    </div>
+
+    <button
+      onclick="calcSecret()"
+      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+    >
+      秘密の数字を求める
+    </button>
+  </div>
+
+  <div
+    id="modal"
+    class="hidden w-screen h-screen fixed top-0 left-0 bg-black flex justify-center items-center p-8"
+  >
+    <div
+      class="w-full bg-sky-50 rounded shadow-lg p-4"
+    >
+      <div
+        class="mb-4"
+      >
+        <div
+          class="flex text-6xl gap-4 items-center mb-2 border-b-2 border-green-500"
+        >
+          <div class="basis-3/4">公開鍵</div>
+          <div id="public-key-show" class="basis-1/4 text-8xl text-right font-bold"></div>
+        </div>
+        <div
+          class="flex text-6xl gap-4 items-center mb-2 border-b-2 border-green-500"
+        >
+          <div class="basis-3/4">公開鍵のペア①</div>
+          <div id="public-pare-key1-show" class="basis-1/4 text-8xl text-right font-bold"></div>
+        </div>
+        <div
+          class="flex text-6xl gap-4 items-center mb-2 border-b-2 border-green-500"
+        >
+          <div class="basis-3/4">公開鍵のペア②</div>
+          <div id="public-pare-key2-show" class="basis-1/4 text-8xl text-right font-bold"></div>
+        </div>
+      </div>
+      <button
+        onclick="handleClose()"
+        class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+      >
+        閉じる
+      </button>
+    </div>
+  </div>
+</body>
+<script src="./js/sender.js"></script>
+</html>

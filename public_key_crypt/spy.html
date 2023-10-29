@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>公開鍵暗号方式 | 暗号ロールプレイゲーム</title>
+</head>
+<body
+  class="w-screen min-h-screen flex flex-col gap-4 justify-center p-4"
+>
+  <h1
+  class="text-3xl font-bold text-sky-600 mt-8"
+  >
+    スパイ | 公開鍵暗号方式
+  </h1>
+  <div
+    class="w-full rounded-md flex flex-col gap-4 border border-sky-400 p-4 shadow-lg"
+  >
+    <div
+      class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+          公開鍵
+        </label>
+        <input 
+          id="crypt-number"
+          type="number"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+    </div>
+    <div
+      class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+        公開鍵のペア①
+        </label>
+        <input 
+          id="crypt-number"
+          type="number"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+    </div>
+    <div
+      class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+        公開鍵のペア②
+        </label>
+        <input 
+          id="crypt-number"
+          type="number"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+    </div>
+
+    <div
+      class="w-full flex"
+    >
+      <label
+        class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+      >
+        予想
+      </label>
+      <input 
+        id="predict-number"
+        type="number"
+        class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+      >
+    </div>
+    <p>ヒント：秘密鍵、公開鍵、公開鍵のペア①、公開鍵のペア②、適当な数をかけて秘密の数を求めています。</p>
+    <button
+      onclick="addPredict()"
+      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+    >
+      追加
+    </button>
+    <table
+      class="text-xl"
+    >
+      <tbody
+        id="predict-table"
+      >
+        
+      </tbody>
+    </table>
+  </div>
+  </div>
+</body>
+<script src="./js/spy.js"></script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>共通鍵暗号方式 | 暗号ロールプレイゲーム</title>
+</head>
+<body
+  class="w-screen min-h-screen flex flex-col gap-4 justify-center p-4"
+>
+  <h1
+    class="text-3xl font-bold text-sky-600 mt-8"
+  >
+    役人（受信者） | 共通鍵暗号方式
+  </h1>
+  <div
+    class="w-full rounded-md flex flex-col gap-4 border border-sky-400 p-4 shadow-lg"
+  >
+    <div
+    class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
+        >
+          共通鍵
+        </label>
+        <input
+          id="common-key"
+          type="number" min="10" max="99"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+      <p>⚠️この数字は役人以外には見せてはいけません。</p>
+    </div>
+    <div
+      class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-green-500"
+        >
+          暗号化した数字
+        </label>
+        <input 
+          id="crypt-number"
+          type="number"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+        >
+      </div>
+    </div>
+    <div
+      class="w-full"
+    >
+      <div
+        class="w-full flex"
+      >
+        <label
+          class="basis-1/4 text-3xl pr-4 text-gray-800 border-r-4 border-yellow-500"
+        >
+          秘密の数字
+        </label>
+        <input 
+          id="secret-number"
+          type="number" min="10" max="99"
+          class="grow text-3xl mx-1 rounded bg-gray-100 focus:border-b-2 focus:border-sky-500 disabled:bg-gray-100 bg-sky-100 outline-none"
+          disabled
+        >
+      </div>
+      <p>⚠️この数字は誰にも見せてはいけません。この数字は「暗号化した数字÷共通鍵」の数字で求めています。</p>
+    </div>
+    <button
+      onclick="calcCrypt()"
+      class="w-full rounded-full p-4 bg-sky-600 text-white hover:bg-sky-400"
+    >
+      秘密の数字を求める
+    </button>
+  </div>
+</body>
+<script src="./js/receiver.js"></script>
+</html>
