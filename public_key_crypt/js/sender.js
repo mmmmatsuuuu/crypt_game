@@ -16,16 +16,16 @@ function handleClose() {
   modal.classList.add("hidden");
 }
 
-function calcPare1() {
-  const secertKey  = document.getElementById("secret-key").value;
+function calcPare2() {
+  const sendNumber = document.getElementById("send-number").value;
   const publicKey  = document.getElementById("public-key").value;
 
-  document.getElementById("public-pare-key1").value = secertKey * publicKey;
+  document.getElementById("public-pare-key2").value = sendNumber * publicKey;
 }
 
 function calcSecret() {
-  const secertKey  = document.getElementById("secret-key").value;
-  const publicPareKey2 = document.getElementById("public-pare-key2").value;
+  const sendNumber = document.getElementById("send-number").value;
+  const publicPareKey1 = document.getElementById("public-pare-key1").value;
 
-  document.getElementById("secret-number").value = secertKey * publicPareKey2;
+  document.getElementById("secret-number").value = sendNumber * publicPareKey1;
 }
